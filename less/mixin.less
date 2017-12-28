@@ -1,0 +1,31 @@
+@charset "uft-8";
+//这个函数还是没有达到维护的目的，要修改的地方还是很多的
+//.adapter(@width:320px){
+//  @media(min-width:@width)
+//  {
+//    html{
+//      font-size:360px/@psdWidth * @baseSize;
+//    }
+//
+//  }
+//
+//}
+//我们应该获取元素
+//设备的类型 存在数组中我们我们应该 遍历 ，但是less 没有循环
+//所以我们利用函数的递归
+//递归要有打破他的条件 即数组的长度利用内置 函数
+//extract 是序号 序号从1 开始
+.adapter(@index) when(@index<=@len){
+  @media (min-width:extract(@deviceWidth,@index)){
+    html{
+      font-size:extract(@deviceWidth,@index) / @psdWidth * @baseSize;
+      }
+    }
+  .adapter(@index + 1);
+  }
+
+
+
+
+
+
